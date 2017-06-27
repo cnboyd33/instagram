@@ -21,9 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             with: ParseClientConfiguration(block: { (configuration: ParseMutableClientConfiguration) -> Void in
                 configuration.applicationId = "Instagram"
                 configuration.clientKey = "ang3alnerngeoI4HT024nga"
-                configuration.server = " https://cryptic-brushlands-91341.herokuapp.com/parse"
-            })
-        )
+                configuration.server = "https://cryptic-brushlands-91341.herokuapp.com/parse"
+            }))
+        
+        if PFUser.current() != nil {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let FeedViewController = storyboard.instantiateViewController(withIdentifier: "FeedViewController")
+            window?.rootViewController = FeedViewController
+        }
         
         return true
     }

@@ -48,8 +48,8 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
             } else {
                 print(error?.localizedDescription)
-                if error.code == 202 {
-                    print("Username is taken.")
+                //if error.code == 202 {
+                    //print("Username is taken.")
                 }
             }
         }
@@ -65,4 +65,4 @@ class LoginViewController: UIViewController {
     }
     */
 
-}
+
