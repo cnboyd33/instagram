@@ -80,9 +80,13 @@ class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, 
         if photoImageView.image != nil {
             takePhotoButton.titleLabel?.text = ""
         }
-
-        
     }
+        
+        
+
+
+    
+    
 
     /*
     // MARK: - Navigation
