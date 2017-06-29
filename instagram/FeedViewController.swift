@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -16,7 +17,17 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //outlets
     @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var profileImageView: PFImageView!
 
+    //sends user to detail page
+    @IBAction func onSendToDetail(_ sender: Any) {
+        performSegue(withIdentifier: "detailSegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
     //log out action
     @IBAction func onLogOut(_ sender: Any) {
             PFUser.logOutInBackground { (error: Error?) in
@@ -64,6 +75,7 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         refreshcontrol.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         //add refresh control to the table view
         feedTableView.insertSubview(refreshcontrol, at: 0)
+        
     }
     
     //refresh function
@@ -74,6 +86,7 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         query.includeKey("author")
         query.includeKey("media")
         query.includeKey("caption")
+        query.includeKey("profile_pic")
         query.limit = 20
         //fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in

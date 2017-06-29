@@ -17,8 +17,6 @@ class PostCell: UITableViewCell {
    //outlets
     //post image
     @IBOutlet weak var postImageView: PFImageView!
-    //profile image
-    @IBOutlet weak var profileImageView: PFImageView!
     //caption
     @IBOutlet weak var captionLabel: UILabel!
     //creation date/time
@@ -32,12 +30,14 @@ class PostCell: UITableViewCell {
     
     //actions
     //go to profile function
+ 
     @IBAction func onUsernameButton(_ sender: Any) {
     }
 
     
     var post: PFObject! {
         didSet {
+            self.profilePicImageView.file = post["profile_pic"] as? PFFile
             self.postImageView.file = post["media"] as? PFFile
             self.postImageView.loadInBackground()
             self.captionLabel.text = post["caption"] as! String
@@ -53,6 +53,13 @@ class PostCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // Make profile pic circular
+        profilePicImageView.layer.borderWidth = 1
+        profilePicImageView.layer.masksToBounds = false
+        profilePicImageView.layer.borderColor = UIColor.lightGray.cgColor
+        profilePicImageView.layer.cornerRadius = profilePicImageView.frame.height/2
+        profilePicImageView.clipsToBounds = true
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
