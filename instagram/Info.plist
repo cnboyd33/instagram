@@ -6,6 +6,12 @@
     <string>NeedLibrary access for uploading Images</string> <!-- added this for photo library permission -->
     <key>NSCameraUsageDescription</key> <!-- added this for camera permission -->
     <string>Need camera access for uploading Images</string> <!-- added this for camera permission -->
+	<key>LSApplicationCategoryType</key>
+	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>NeedLibrary access for uploading Images</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need camera access for uploading Images</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

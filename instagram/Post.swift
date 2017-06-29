@@ -11,20 +11,37 @@ import Parse
 
 class Post: NSObject {
     
+    
+    let creationTime: TimeInterval?
+    let media: PFFile?
+    let author: String?
+    let caption: String?
+    let likesCount: Int?
+    let commentsCount: Int?
+    
+    init(pfObject: PFObject) {
+        creationTime = pfObject["creationTime"] as? TimeInterval
+        media = pfObject["media"] as? PFFile
+        author = pfObject["author"] as? String
+        caption = pfObject["caption"] as? String
+        likesCount = pfObject["likesCount"] as? Int
+        commentsCount = pfObject["commentsCount"] as? Int
+    }
+    
+    
     class func postUserImage(image: UIImage?, withCaption caption: String?, withCompletion completion: PFBooleanResultBlock?) {
         //create parse object PFObject
         let post = PFObject(className: "Post")
         //add relevant fields to the object
         post["media"] = getPFFileFromImage(image: image) // PFFile column type
         post["author"] = PFUser.current() // Pointer column type that points to PFUser
-        post["caption"] = caption
+        post["caption"] = caption ?? ""
         post["likesCount"] = 0
         post["commentsCount"] = 0
         
         // Save object (following function will save the object in Parse asynchronously)
-        post.saveInBackground { (success: Bool, error: Error?) in
-            print("post has been saved")
-        }
+        post.saveInBackground(block: completion)
+        print("post was saved")
         
 
     }

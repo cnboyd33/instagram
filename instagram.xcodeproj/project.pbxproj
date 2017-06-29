@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E28E8DD1F02F726009C7DED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28E8DC1F02F726009C7DED /* AppDelegate.swift */; };
-		1E28E8DF1F02F726009C7DED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28E8DE1F02F726009C7DED /* ViewController.swift */; };
 		1E28E8E21F02F726009C7DED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E28E8E01F02F726009C7DED /* Main.storyboard */; };
 		1E28E8E41F02F726009C7DED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E28E8E31F02F726009C7DED /* Assets.xcassets */; };
 		1E28E8E71F02F726009C7DED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E28E8E51F02F726009C7DED /* LaunchScreen.storyboard */; };
@@ -46,7 +45,6 @@
 /* Begin PBXFileReference section */
 		1E28E8D91F02F726009C7DED /* instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E28E8DC1F02F726009C7DED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1E28E8DE1F02F726009C7DED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1E28E8E11F02F726009C7DED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E28E8E31F02F726009C7DED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E28E8E61F02F726009C7DED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				1E28E8DC1F02F726009C7DED /* AppDelegate.swift */,
-				1E28E8DE1F02F726009C7DED /* ViewController.swift */,
 				1E28E8E01F02F726009C7DED /* Main.storyboard */,
 				1E28E8E31F02F726009C7DED /* Assets.xcassets */,
 				1E28E8E51F02F726009C7DED /* LaunchScreen.storyboard */,
@@ -469,7 +466,6 @@
 			files = (
 				1E28E9111F0317CA009C7DED /* PhotoMapViewController.swift in Sources */,
 				1E28E90B1F030073009C7DED /* LoginViewController.swift in Sources */,
-				1E28E8DF1F02F726009C7DED /* ViewController.swift in Sources */,
 				1E28E9131F03219A009C7DED /* Post.swift in Sources */,
 				1E28E90F1F03155C009C7DED /* FeedViewController.swift in Sources */,
 				1E28E91B1F045337009C7DED /* PostCell.swift in Sources */,
