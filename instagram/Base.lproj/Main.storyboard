@@ -77,19 +77,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="541" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVy-9p-6HM">
-                                <rect key="frame" x="16" y="8" width="343" height="610"/>
+                                <rect key="frame" x="0.0" y="8" width="375" height="610"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="541" id="wD5-po-4Ye" customClass="PostCell" customModule="instagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="541"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="541"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wD5-po-4Ye" id="ZFU-Yy-ias">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="540.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="540.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I8b-sA-VQ9" customClass="PFImageView">
-                                                    <rect key="frame" x="-16" y="53" width="375" height="375"/>
+                                                    <rect key="frame" x="0.0" y="53" width="375" height="375"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="upY-ah-gCL">
@@ -126,7 +126,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Button" image="more_button"/>
                                                     <connections>
-                                                        <action selector="onSendToDetail:" destination="Wot-Ke-35a" eventType="touchUpInside" id="nh6-e5-GyX"/>
+                                                        <action selector="onSendToDetail:" destination="wD5-po-4Ye" eventType="touchUpInside" id="l6y-Su-dcU"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLy-jm-7Xi">
@@ -362,7 +362,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxp-ci-BMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3732" y="77"/>
+            <point key="canvasLocation" x="3615" y="-690"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="L62-jR-vNm">
@@ -376,11 +376,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60P-yy-RMz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="60P-yy-RMz" customClass="PFImageView">
                                 <rect key="frame" x="16" y="156" width="343" height="398"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gl-9z-MOF">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQf-tM-SWf">
+                                <rect key="frame" x="106" y="118" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="onUsername:" destination="5Wg-Xb-wxA" eventType="touchUpInside" id="FHK-Ak-7Fc"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Gl-9z-MOF" customClass="PFImageView">
                                 <rect key="frame" x="26" y="66" width="72" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -398,14 +405,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQf-tM-SWf">
-                                <rect key="frame" x="106" y="118" width="71" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YXe-HP-xQh">
+                                <rect key="frame" x="106" y="122" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Username"/>
-                                <connections>
-                                    <action selector="onUsername:" destination="5Wg-Xb-wxA" eventType="touchUpInside" id="FHK-Ak-7Fc"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -413,8 +419,9 @@
                     <connections>
                         <outlet property="captionLabel" destination="Grb-2M-hqA" id="MZF-Bj-lCw"/>
                         <outlet property="creationDateLabel" destination="h1E-eM-PxE" id="89F-46-3P8"/>
-                        <outlet property="photoImageView" destination="60P-yy-RMz" id="Se1-ab-iNm"/>
-                        <outlet property="profileImageView" destination="8Gl-9z-MOF" id="JYD-x1-hnI"/>
+                        <outlet property="photoImageView" destination="60P-yy-RMz" id="zwX-Zd-jKD"/>
+                        <outlet property="profileImageView" destination="8Gl-9z-MOF" id="r4l-4N-Ump"/>
+                        <outlet property="usernameLabel" destination="YXe-HP-xQh" id="1Lc-bM-qha"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKI-sL-hsL" userLabel="First Responder" sceneMemberID="firstResponder"/>

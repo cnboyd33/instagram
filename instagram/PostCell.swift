@@ -10,6 +10,10 @@ import UIKit
 import Parse
 import ParseUI
 
+@objc protocol PostCellDelegate {
+    func didMoveToDetail(postCell: PostCell)
+}
+
 class PostCell: UITableViewCell {
 
 
@@ -27,7 +31,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     
     //var postImage =
-    
+    var delegate: PostCellDelegate?
     //actions
     //go to profile function
  
@@ -40,7 +44,7 @@ class PostCell: UITableViewCell {
             self.profilePicImageView.file = post["profile_pic"] as? PFFile
             self.postImageView.file = post["media"] as? PFFile
             self.postImageView.loadInBackground()
-            self.captionLabel.text = post["caption"] as! String
+            self.captionLabel.text = (post["caption"] as! String)
             self.creationDateLabel.text = post["_created_at"] as? String
             if let user = post["author"] as? PFUser {
                 self.usernameLabel.text = user.username
@@ -68,4 +72,9 @@ class PostCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func onSendToDetail(_ sender: Any) {
+        print("about to go to detail")
+        print(delegate)
+        delegate!.didMoveToDetail(postCell: self)
+    }
 }

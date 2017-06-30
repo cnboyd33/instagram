@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
 class DetailViewController: UIViewController {
+    
+    var post: PFObject!
+    var caption: String!
+    var username: String!
+    var date: String!
+    var profileImage: PFFile!
+    var postImage: PFFile!
 
     //post image
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: PFImageView!
     //profile pic
-    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileImageView: PFImageView!
     //caption label
     @IBOutlet weak var captionLabel: UILabel!
     //creation date label
     @IBOutlet weak var creationDateLabel: UILabel!
+    //usernameLabel
+    @IBOutlet weak var usernameLabel: UILabel!
     //goes to profile page
     @IBAction func onUsername(_ sender: Any) {
     }
@@ -25,14 +36,32 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
+            self.profileImageView.file = profileImage
+            self.photoImageView.file = postImage
+            self.photoImageView.loadInBackground()
+            self.profileImageView.loadInBackground()
+            self.captionLabel.text = caption
+            self.creationDateLabel.text = date
+            if let user = username {
+                self.usernameLabel.text = username
+            } else {
+                self.usernameLabel.text = ":^)"
+            
+            }
+        }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+}
+
+
+        // Do any additional setup after loading the view.
+
+
+
 
     /*
     // MARK: - Navigation
@@ -44,4 +73,3 @@ class DetailViewController: UIViewController {
     }
     */
 
-}

@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, PostCellDelegate {
     
     //variables
     var postArray: [PFObject] = []
@@ -20,12 +20,17 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var profileImageView: PFImageView!
 
     //sends user to detail page
-    @IBAction func onSendToDetail(_ sender: Any) {
-        performSegue(withIdentifier: "detailSegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" {
+            let vc = segue.destination as! DetailViewController
+            let cell = sender as! PostCell
+            vc.caption = cell.captionLabel.text
+            vc.username = cell.usernameLabel.text
+            vc.date = cell.creationDateLabel.text
+            vc.profileImage = cell.profilePicImageView.file
+            vc.postImage = cell.postImageView.file
+        }
     }
     
     //log out action
@@ -116,9 +121,14 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
         let posts = self.postArray[indexPath.row]
+        cell.delegate = self
         print("here is the post object")
         cell.post = posts
         return cell
+    }
+    
+    func didMoveToDetail(postCell: PostCell) {
+        performSegue(withIdentifier: "detailSegue", sender: postCell)
     }
 
     
