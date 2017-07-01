@@ -14,7 +14,7 @@ class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     //outlets
     //post image
-    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var photoImageView: PFImageView!
     //take a photo label
     @IBOutlet weak var takePhotoButton: UIButton!
     //caption text field
@@ -45,7 +45,8 @@ class ComposeViewController: UIViewController, UIImagePickerControllerDelegate, 
         Post.postUserImage(image: photoImageView.image, withCaption: captionTextField.text) { (success: Bool, error: Error?) in
             if success {
                 print("you posted")
-                self.performSegue(withIdentifier: "postSegue", sender: nil)
+//                self.performSegue(withIdentifier: "postSegue", sender: nil)
+                self.tabBarController?.selectedIndex = 0
             } else {
                 print("this is the sharing error: \(error?.localizedDescription)")
             }

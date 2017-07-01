@@ -17,7 +17,7 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //outlets
     @IBOutlet weak var feedTableView: UITableView!
-    @IBOutlet weak var profileImageView: PFImageView!
+
 
     //sends user to detail page
         
@@ -27,46 +27,28 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let cell = sender as! PostCell
             vc.caption = cell.captionLabel.text
             vc.username = cell.usernameLabel.text
-            vc.date = cell.creationDateLabel.text
+            //vc.date = cell.creationDateLabel.text
             vc.profileImage = cell.profilePicImageView.file
             vc.postImage = cell.postImageView.file
+            let indexPath = feedTableView.indexPath(for: cell)
+            let post = postArray[(indexPath?.row)!]
+            vc.post = post
         }
     }
     
     //log out action
     @IBAction func onLogOut(_ sender: Any) {
-            PFUser.logOutInBackground { (error: Error?) in
-                PFUser.current() == nil
+        PFUser.logOutInBackground(block: { (error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                NotificationCenter.default.post(name: NSNotification.Name("onLogout"), object: nil)
             }
-        }
-    
-    //camera function
-    @IBAction func onCamera(_ sender: Any) {
-        let vc = UIImagePickerController()
-        vc.delegate = self
-        vc.allowsEditing = true
-        
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            print("camera is avaiable")
-            vc.sourceType = UIImagePickerControllerSourceType.camera
-        } else {
-            print("Camera is not available so we will use photo library instead.")
-            vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        }
-        
-        self.present(vc, animated: true, completion: nil)
+        })
     }
     
-    //saves the image
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        //get the image captured by the uiimagepickercontroller
-        let originalImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-        let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        //do something with the images (based on your use case)
+    
         
-        //dimsiss uiimagepickercontroller to go back to your original view controller
-        dismiss(animated: true, completion: nil)
-    }
     
     //viewDidlLoad
     override func viewDidLoad() {
@@ -92,6 +74,7 @@ class FeedViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         query.includeKey("media")
         query.includeKey("caption")
         query.includeKey("profile_pic")
+        query.includeKey("createdAt")
         query.limit = 20
         //fetch data asynchronously
         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in

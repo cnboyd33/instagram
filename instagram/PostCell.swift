@@ -51,6 +51,16 @@ class PostCell: UITableViewCell {
             } else {
                 self.usernameLabel.text = ":^)"
             }
+            
+            if let creationDateLabel = post["creationTime"] {
+                let postDateFormatter: DateFormatter = {
+                    let f = DateFormatter()
+                    f.dateFormat = "MMM d, yyyy"
+                    return f
+                }()
+                self.creationDateLabel.text = postDateFormatter.string(from: Date(timeIntervalSinceReferenceDate: creationDateLabel as! TimeInterval))
+                
+            }
         }
     }
     

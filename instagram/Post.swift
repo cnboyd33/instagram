@@ -12,7 +12,6 @@ import Parse
 class Post: NSObject {
     
     
-    let creationTime: TimeInterval?
     let media: PFFile?
     let author: String?
     let caption: String?
@@ -20,12 +19,12 @@ class Post: NSObject {
     let commentsCount: Int?
     
     init(pfObject: PFObject) {
-        creationTime = pfObject["creationTime"] as? TimeInterval
         media = pfObject["media"] as? PFFile
         author = pfObject["author"] as? String
         caption = pfObject["caption"] as? String
         likesCount = pfObject["likesCount"] as? Int
         commentsCount = pfObject["commentsCount"] as? Int
+        
     }
     
     
@@ -38,6 +37,7 @@ class Post: NSObject {
         post["caption"] = caption ?? ""
         post["likesCount"] = 0
         post["commentsCount"] = 0
+        //post["profile_pic"] = #imageLiteral(resourceName: "gradient")
         
         
         // Save object (following function will save the object in Parse asynchronously)

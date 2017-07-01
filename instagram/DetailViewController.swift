@@ -41,14 +41,25 @@ class DetailViewController: UIViewController {
             self.photoImageView.loadInBackground()
             self.profileImageView.loadInBackground()
             self.captionLabel.text = caption
-            self.creationDateLabel.text = date
             if let user = username {
                 self.usernameLabel.text = username
             } else {
                 self.usernameLabel.text = ":^)"
             
             }
+            print(post)
+            print(post.createdAt)
+        
+            if let date = post.createdAt {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateStyle = .medium
+                dateFormatter.timeStyle = .short
+                let dateString = dateFormatter.string(from: date)
+                print(dateString) // Prints: Jun 28, 2017, 2:08 PM
+            
+            creationDateLabel.text = dateString
         }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

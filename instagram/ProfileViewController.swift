@@ -7,13 +7,44 @@
 //
 
 import UIKit
+import Parse
+import ParseUI
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    var profilePost: [PFObject] = []
+    
+    //profile pic image
+    @IBOutlet weak var profileImageView: UIImageView!
+    //username
+    @IBOutlet weak var usernameLabel: UILabel!
+    //biography
+    @IBOutlet weak var bioLabel: UILabel!
+    //collection view
+    @IBOutlet weak var profileCollectionView: UICollectionView!
+        
+   
+    
+    
+    //goes to settings page
+    @IBAction func onSettings(_ sender: Any) {
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return profilePost.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "profileCell", for: indexPath) as! ProfileCell
+        
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
